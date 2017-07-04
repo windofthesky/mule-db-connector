@@ -54,6 +54,16 @@ public class TestDbConfig {
     }
   }
 
+  public static List<Object[]> getSqlServerResource() {
+    if (true) {
+      final DerbyTestDatabase derbyTestDatabase = new DerbyTestDatabase();
+      return singletonList(new Object[] {"integration/config/sql-server-config.xml", derbyTestDatabase,
+          derbyTestDatabase.getDbType()});
+    } else {
+      return emptyList();
+    }
+  }
+
   public static List<Object[]> getMySqlResource() {
     if (USE_MYSQL) {
       final MySqlTestDatabase mySqlTestDatabase = new MySqlTestDatabase();
