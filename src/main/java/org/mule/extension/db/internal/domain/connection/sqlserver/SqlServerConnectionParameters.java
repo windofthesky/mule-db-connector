@@ -9,13 +9,14 @@ import org.mule.runtime.extension.api.annotation.param.Optional;
 import org.mule.runtime.extension.api.annotation.param.Parameter;
 import org.mule.runtime.extension.api.annotation.param.display.Password;
 import org.mule.runtime.extension.api.annotation.param.display.Placement;
+import org.mule.runtime.extension.api.annotation.values.OfValues;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SqlServerConnectionParameters extends BaseDbConnectionParameters implements DataSourceConfig {
 
-  final String SUB_PROTOCOL = "jdbc:sqlserver://";
+  private static final String SUB_PROTOCOL = "jdbc:sqlserver://";
 
   /**
    * Configures the host of the database
@@ -52,6 +53,7 @@ public class SqlServerConnectionParameters extends BaseDbConnectionParameters im
   @Parameter
   @Optional
   @Placement(order = 5)
+  @OfValues(SqlSerververDatabaseNameOptionResolver.class)
   private String databaseName;
 
   /**

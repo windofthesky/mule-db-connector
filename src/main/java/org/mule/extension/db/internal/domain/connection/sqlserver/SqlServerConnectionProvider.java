@@ -8,6 +8,7 @@ import static org.mule.runtime.extension.api.annotation.param.ParameterGroup.CON
 import org.mule.extension.db.api.exception.connection.DbError;
 import org.mule.extension.db.internal.domain.connection.DataSourceConfig;
 import org.mule.extension.db.internal.domain.connection.DbConnectionProvider;
+import org.mule.runtime.api.meta.ExternalLibraryType;
 import org.mule.runtime.extension.api.annotation.Alias;
 import org.mule.runtime.extension.api.annotation.ExternalLib;
 import org.mule.runtime.extension.api.annotation.param.ParameterGroup;
@@ -21,7 +22,7 @@ import java.util.Optional;
 @Alias("mssql")
 @ExternalLib(name = "Microsoft SQL Server Driver",
     description = "A JDBC driver which supports connecting to an Microsoft SQL Server Database",
-    fileName = DRIVER_FILE_NAME_PATTERN, requiredClassName = DRIVER_CLASS_NAME)
+    nameRegexpMatcher = DRIVER_FILE_NAME_PATTERN, requiredClassName = DRIVER_CLASS_NAME, type = ExternalLibraryType.JAR)
 public class SqlServerConnectionProvider extends DbConnectionProvider {
 
   static final String DRIVER_CLASS_NAME = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
